@@ -1,0 +1,47 @@
+#INSERTING DATA INTO SINGLE CELL TWO WAYS
+
+import openpyxl
+workbook=openpyxl.workbook()
+workbook=workbook.active
+
+sheet["A1"]=""
+sheet["B1"]=""
+sheet["C1"]=""
+sheet["D1"]=""
+sheet["E1"]=""
+sheet["A2"]=""
+sheet["B2"]=""
+sheet["C2"]=""
+sheet["D2"]=""
+sheet["E2"]=""
+
+sheet["A1"].value=""
+
+sheet.cell(row=5,col=7, value="Testing")
+
+workbook.save()
+
+#INSERTING DATA FROM NESTED LISTS
+
+import openpyxl
+workbook=openpyxl.workbook()
+workbook=workbook.active
+
+data = [
+    ["Name", "Age", "City"],
+    ["John", 28, "New York"],
+    ["Alice", 35, "San Francisco"],
+    ["Bob", 22, "Chicago"],
+    ["Eva", 40, "Los Angeles"]	]
+
+for row in data:
+    sheet.append(row)
+
+workbook.save(nested_list.xlsx)
+
+
+import openpyxl
+workbook=openpyxl.workbook()
+workbook=workbook.active
+
+
