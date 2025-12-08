@@ -1,0 +1,13 @@
+import openpyxl
+workbook = openpyxl.workbook()
+workbook = workbook.active
+
+sheet1 = openpyxl.create_sheet(sheet_title1)
+sheet2 = openpyxl.create_sheet(sheet_title2)
+sheet3 = openpyxl.create_sheet(sheet_title3)
+sheet4 = openpyxl.create_sheet(sheet_title4)
+sheet5 = openpyxl.create_sheet(sheet_title5)
+sheet6 = openpyxl.create_sheet(sheet_title6)
+sheet7 = openpyxl.create_sheet(sheet_title7)
+
+workbook.save("creating_worksheets.xlsx")
