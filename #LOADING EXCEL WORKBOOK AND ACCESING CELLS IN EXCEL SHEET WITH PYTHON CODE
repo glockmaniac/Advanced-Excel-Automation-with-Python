@@ -1,0 +1,19 @@
+#LOADING EXCEL WORKBOOK AND ACCESING CELLS IN EXCEL SHEET WITH PYTHON CODE
+
+import openpyxl
+workbook=openpyxl.load_workbook("iterating_over_columns & rows.xlsx")
+sheet=workbook.active
+
+#ACCESING A RANGE OF CELLS
+#range = sheet["A4:F7"]
+
+#for row in range:
+#    for cell in row:
+#        print(cell.value) 
+
+#ACCESING ALL CELLS THAT ARE NOT NONE IN A SHEET BY ITERATING
+
+for row in sheet.iter_rows(values_only=True):
+    for value in row:
+        if value is not None:
+            print(value)
