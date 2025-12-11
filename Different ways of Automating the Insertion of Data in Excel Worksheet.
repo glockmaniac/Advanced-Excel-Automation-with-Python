@@ -40,7 +40,7 @@ for row in data:
 workbook.save(nested_list.xlsx)
 
 
-#INSERTING DATA IN EXCEL BY ITERATING INTO COLUMN
+#INSERTING DATA IN EXCEL BY ITERATING INTO ROW AND COLUMN
 
 import openpyxl
 from openpyxl.styles import Alignment
@@ -52,18 +52,20 @@ sheet.title="Employee_Salaries"
 
 SN=["S/N",1,2,3,4,5,6,7,8,9,10]
 Names=["NAMES","Jane Doe","John Doe","Bill Gates","Larry Page","John Wick",
-       "Kanye West","Damian Marley","Jason Statham","Kill Bill","Sonia Blade"]
-Departments=["DEPARTMENTS","CEO","Manager","Sales Rep","Sales Rep","Sales Rep","Sales Rep"
+       "Kanye West","Damian Marley","Jason Statham","Kill Bill","Soxrcey"]
+Departments=["DEPARTMENTS","CEO","Manager","Sales Rep","Sales Rep","Sales Rep","Sales Rep",
                "Data Analyst","Dispatch Rider","Accountant","Me"]
-Salaries=["SALARIES",800000,600000,100000,100000,100000,300000,60000,200000,800000]
-Medical_allowances=["MEDICAL_ALLOWANCES",100000,50000,10000,10000,10000,30000,5000,20000,100000] 
-Internet_allowances=["INTERNET_ALLOWANCES",25000,15000,5000,5000,5000,15000,3000,8000,25000]
-tax=["TAX",]
+Salaries=["SALARIES",800000,600000,100000,100000,100000,100000,300000,60000,200000,800000]
+Medical_allowances=["MEDICAL_ALLOWANCES",100000,50000,10000,10000,10000,10000,30000,5000,20000,100000] 
+Internet_allowances=["INTERNET_ALLOWANCES",25000,15000,5000,5000,5000,5000,15000,3000,8000,25000]
 
 Employee_salaries= list(zip(SN,Names,Departments,Salaries,Medical_allowances,Internet_allowances))
 
-for col in Employee_salaries:
-    sheet.append(col)
+#for col in Employee_salaries:
+#   sheet.append(col)
+
+for row in Employee_salaries:
+    sheet.append(row)
 
 alignment_obj= Alignment(
     horizontal="right",
@@ -88,5 +90,4 @@ sheet["E1"].font=font_column_heads
 sheet["F1"].font=font_column_heads
 
 
-workbook.save("iterating_over_columns & rows.xlsx")  
-
+workbook.save("iterating_over_columns & rows.xlsx")
