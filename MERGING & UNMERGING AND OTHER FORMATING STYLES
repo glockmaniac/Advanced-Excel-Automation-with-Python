@@ -1,0 +1,100 @@
+#MERGING & UNMERGING AND OTHER FORMATING USING PYTHON SCRIPT
+
+import openpyxl
+from openpyxl.drawing.image import Image
+from openpyxl.styles import Font
+from openpyxl.styles import Alignment
+from openpyxl.styles import Border,Side
+from openpyxl.styles import PatternFill
+from openpyxl.comments import Comment
+workbook = openpyxl.load_workbook("iterating_over_columns & rows.xlsx")
+sheet= workbook.active
+
+#TO IMPORT IMAGES USING PYHTON CODE IN VSCODE YOU NEED TO INSTALL PILLOW
+#####STEPS IN INSTALLING PILLOW
+#STEP 1
+#OPEN A FOLDER CALLED Pillow_Project
+#OPEN THE FOLDE IN VSCODE
+#ONCE THE FOLDER IS OPEN
+#STEP 2
+#OPEN THE TERMINAL IN VSCODE
+#type python3 -m venv venv (this is to add to the path in environment Variables)
+#STEP 3
+#INSTALL PILLOW 
+#pip install pillow
+#Done 
+
+#INSERTING ROWS & COLUMNS
+sheet.insert_rows(idx=1, amount=1)
+#sheet.insert_column(idx=1, amount=1)
+
+#MERGING AND UNMERGING COLUMNS
+
+sheet.merge_cells("A1:F1")
+#sheet.unmerge_cells("A1:F1")
+
+sheet["A1"]="EMPLOYEES SALARY"
+
+#ADDING IMAGES
+
+Img=("John_Doe.png","Jane_Doe.jpeg","Bill_Gates.jpg","Larry_Page.jpg","John Wick.jpg",
+     "Kanye_West.jpg","Damian_Marley.jpg","Jason_Statham.jpg","Kill_Bill.jpg","Soxcery.jpeg")
+
+for i,image in enumerate(Img, start=3):
+    imaging=Image(image)
+    imaging.width=15
+    imaging.hight=15
+    sheet.add_image(imaging,f"G{i}")
+
+#ADDING FONT 
+
+font_1=Font(
+    name="Times New Roman",
+    bold=True,
+    italic=True,
+    size=11,
+    underline=None,
+    color="fff000"
+)
+
+sheet["A1"].font=font_1
+
+#ADDDING ALINGMENT
+
+alignment_obj= Alignment(
+    vertical="top",
+    horizontal="left",
+    shrink_to_fit=True,
+    wrap_text=True
+)
+
+sheet["A1"].alignment=alignment_obj
+
+#ADDING BORDER
+
+Border_obj=Border(
+    left=Side(style="dashed",color="ccaaff"),
+    right=Side(style="dashed",color="fff000"),
+    top=Side(style="medium",color="aaccbb"),
+    bottom=Side(style="double",color="fff000")
+
+)
+
+sheet["A1"].border=Border_obj
+
+#ADDING BACKGROUD
+
+Background_obj=PatternFill(
+    start_color="ccaaff",
+    end_color="ccaaff",
+    fill_type="solid"
+)
+
+sheet["A1"].fill=Background_obj
+
+#ADDING COMMENT IN A PARTICULAR CELL
+
+comment_obj=Comment("This is my Brand","Soxcery")
+sheet["B11"].comment=comment_obj
+
+workbook.save("Formating.xlsx")
