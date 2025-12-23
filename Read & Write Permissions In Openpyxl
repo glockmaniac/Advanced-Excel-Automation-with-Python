@@ -1,0 +1,7 @@
+import openpyxl
+workbook=openpyxl.load_workbook("Formating.xlsx",read_only=True)
+#workbook=openpyxl.wokbook(write_only=True)
+#WRITE PERMISSIONS WORK ONLY WITH CREATING NEW FILES ON OPENPYXL
+sheet=workbook.active 
+
+workbook.save("Formating.xlsx")
